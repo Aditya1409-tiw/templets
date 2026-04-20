@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Booking Confirmed — Maison Verdant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-logo">Maison Verdant</div>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/book">Reserve</a>
+      <a href="/admin">Admin</a>
+    </div>
+  </nav>
+
+  <div class="confirmation-wrapper">
+    <div class="confirm-card">
+      <div class="confirm-icon">✓</div>
+      <h1>Reservation Confirmed</h1>
+      <p class="confirm-sub">Thank you, <strong>{{ booking['name'] }}</strong>. We look forward to hosting you.</p>
+
+      <div class="confirm-details">
+        <div class="detail-row"><span>Booking ID</span><strong>#{{ booking['id'] }}</strong></div>
+        <div class="detail-row"><span>Date</span><strong>{{ booking['date'] }}</strong></div>
+        <div class="detail-row"><span>Time</span><strong>{{ booking['time'] }}</strong></div>
+        <div class="detail-row"><span>Guests</span><strong>{{ booking['guests'] }}</strong></div>
+        <div class="detail-row"><span>Table</span><strong>{{ table['name'] }} — {{ table['location'] }}</strong></div>
+        <div class="detail-row"><span>Contact</span><strong>{{ booking['email'] }}</strong></div>
+        {% if booking['special_request'] %}
+        <div class="detail-row"><span>Special Request</span><strong>{{ booking['special_request'] }}</strong></div>
+        {% endif %}
+      </div>
+
+      <p class="confirm-note">A confirmation has been noted for <em>{{ booking['email'] }}</em>. Please arrive 10 minutes before your reservation.</p>
+
+      <div class="confirm-actions">
+        <a href="/book" class="btn-primary">Make Another Booking</a>
+        <a href="/" class="btn-outline">Back to Home</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>© 2024 Maison Verdant · 14 Rue des Jardins · contact@maisonverdant.com</p>
+  </footer>
+</body>
+</html>
